@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,600&display=swap');
  /* no scrolling! */
  body {
    overflow: hidden;
-   background-color: #222;
+   background-color: #d4d1d1;
    margin: 0px;
-   font-family: Calibri;
+   font-family: "Open Sans";
    user-select: none;
  }
 
@@ -97,7 +98,7 @@
    background-color: #222;
    background-size: cover;
    background-repeat: no-repeat;
-   filter: brightness(0.5) saturation(0.9) blur(0px) contrast(100%);
+   filter: brightness(1) saturation(0.9) blur(0px) contrast(100%);
    transition: 0.3s;
    z-index: 1;
  }
@@ -148,11 +149,11 @@
 
  /* the time widget */
  .time {
-   color: rgba(255, 255, 255, 0.5);
-   font-family: "Antic";
+   color: rgba(255, 255, 255, 0.9);
+   font-family: "open sans";
    user-select: none;
-   font-weight: 100;
-   font-size: 9vw;
+   font-weight: 500;
+   font-size: 12vw;
    margin-bottom: 12px;
    margin-top: 30px;
    cursor: pointer;
@@ -161,7 +162,7 @@
 
  /* AM/PM text element */
  .pa {
-   color: rgba(255, 255, 255, 0.5);
+   color: rgba(255, 255, 255, 0.8);
    font-family: "Antic";
    font-weight: 100;
    font-size: 1vw;
@@ -172,7 +173,7 @@
 
  /* time widget element */
  .info {
-   color: rgba(255, 255, 255, 0.5);
+   color:rgba(255, 255, 255, 0.8);
    font-family: "Antic";
    user-select: none;
    font-weight: 100;
@@ -183,14 +184,14 @@
  /* search widget */
  .search {
    padding: 5px;
-   border-radius: 7px;
-   color: rgba(255, 255, 255, 0.5);
-   background-color: rgba(255, 255, 255, 0) !important;
+   border-radius: 10px;
+   color: rgba(255, 255, 255, 0.8);
+   background-color: rgba(0, 0, 0, 0.3) !important;
    font-size: 20px;
    font-family: "Abel";
    font-weight: 100;
    width: 18vw;
-   border-color: rgba(255, 255, 255, 0.2) !important;
+   border-color: rgba(255, 255, 255, 0) !important;
  }
 
  /* movable part of search widget */
@@ -241,30 +242,31 @@
  }
 
  .todoWrapper {
-   position: absolute;
-   background: transparent;
-   top: 70%;
-   left: 27%;
-   width: calc(250px + 4vw);
-   z-index: 5;
-   opacity: 0;
- }
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 10%;
+  left: 5%;
+  width: calc(250px + 10vw);
+  z-index: 5;
+  opacity: 0;
+  border-radius: 10px;
+}
 
- /* setting todolist hover to be visible */
- .todoHover {
-   background-color: rgba(0, 0, 0, 0);
-   border-radius: 8px;
- }
+/* setting todolist hover to be visible */
+.todoHover {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+}
 
- .todoHover:hover {
-   background-color: rgba(0, 0, 0, 0.4) !important;
-   transition: 0.2s;
- }
+.todoHover:hover {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  transition: 0.2s;
+}
 
- .todoHover:hover .todoInput::placeholder {
-   color: rgba(255, 255, 255, 0.55);
-   transition: 0.2s;
- }
+.todoHover:hover .todoInput::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+  transition: 0.2s;
+}
 
  /* bookmarks */
  #bookmarks {
@@ -374,10 +376,10 @@
    overflow: hidden;
    transition: all .2s cubic-bezier(.68, -0.2, .27, 1.55);
  }
-
+ 
  #menu:hover,
  #menu.delay {
-   background-color: rgba(0, 0, 0, 0.8);
+   background-color:  #132743;
    width: 235px;
    overflow: auto !important;
    /* firefox scrollbar */
@@ -410,7 +412,7 @@
 
  .menuText {
    background-color: rgba(255, 255, 255, 0) !important;
-   color: rgba(255, 255, 255, 0.7);
+   color: #f0f0f0;
    margin-top: 25px;
    margin-bottom: 10px;
    font-size: 24px;
