@@ -1,9 +1,9 @@
 {
   "default": {
-    "link": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg",
-    "title": "Mona Lisa",
-    "year": "1503",
-    "painter": "Leonardo Da Vinci"
+    "link": "https://lds-img.finalfantasyxiv.com/h/l/QpExCxHkd7zpxqXK1cl4Uz8bJ8.jpg",
+    "title": "Final Fantasy XIV",
+    "affiliance": "Scions of The Seventh Dawn",
+    "quote": "Leonardo Da Vinci"
   },
   "info_title": "Painting Info",
   "support_link": "https://suitangi.github.io/Minimal-Newtab/resources/Background%20JSON",
@@ -11,52 +11,33 @@
   "type": "image",
   "info": [
     [
-      {
-        "name": "title",
-        "size": "large"
-      },
-      {
-        "name": "painter",
-        "size": "medium"
-      },
-      {
-        "name": "year",
-        "size": "small"
-      }
+      {"name": "title","size": "large"},
+      {"name": "affiliance","size": "medium"},
+      {"name": "quote","size": "small"}
     ],
     [
-      {
-        "name": "title",
-        "size": "medium"
-      },
-      {
-        "name": "painter",
-        "size": "small"
-      },
-      {
-        "name": "source",
-        "size": "small"
-      }
+      {"name": "title","size": "medium"},
+      {"name": "quote","size": "small"}
     ],
     [
-      {
-        "name": "title",
-        "size": "medium"
-      }
-    ]],
+      {"name": "title","size": "medium"}
+
+    ]
+  ],
   "sources": [{
       "name": "Renaissance",
       "list": [{
-        "link": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1200px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg",
-        "title": "Mona Lisa",
-        "year": "1503",
-        "painter": "Leonardo Da Vinci"
+        "link": "https://lds-img.finalfantasyxiv.com/h/l/QpExCxHkd7zpxqXK1cl4Uz8bJ8.jpg",
+        "title": "Final Fantasy XIV",
+        "affiliance": "Scions of The Seventh Dawn",
+        "quote": "Leonardo Da Vinci"
+        
       },
       {
         "link": "https://upload.wikimedia.org/wikipedia/commons/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg",
         "title": "The School of Athens",
-        "year": "1509 - 1511",
-        "painter": "Raphael"
+        "affiliance": "1509 - 1511",
+        "quote": "Raphael"
       }]
     },
     {
@@ -64,14 +45,14 @@
       "list": [{
         "link": "https://upload.wikimedia.org/wikipedia/commons/5/54/Claude_Monet%2C_Impression%2C_soleil_levant.jpg",
         "title": "Impression, Sunrise",
-        "year": "1872",
-        "painter": "Claude Monet"
+        "affiliance": "1872",
+        "quote": "Claude Monet"
       },
       {
         "link": "https://upload.wikimedia.org/wikipedia/commons/3/30/The_Fighting_Temeraire%2C_JMW_Turner%2C_National_Gallery.jpg",
         "title": "The Fighting Temeraire",
-        "year": "1839",
-        "painter": "J. M. W. Turner'"
+        "affiliance": "1839",
+        "quote": "J. M. W. Turner'"
       }]
     }
   ]
