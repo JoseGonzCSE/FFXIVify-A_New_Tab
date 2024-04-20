@@ -243,7 +243,7 @@ function updateSearch() {
   }
 }
 
-//Search bar: chaanges the search engine
+//Search bar: changes the search engine
 function changeSearch() {
   chrome.storage.local.get({
     search_engine: 0
@@ -263,6 +263,31 @@ function changeSearch() {
       search_engine: index
     }, function() {});
   });
+}
+
+
+//Date:Toggles visibility of the Date
+function updateDate() {
+
+  let dateWrapper = document.getElementById("dateWrapper");
+  let dateSwitch = document.getElementById("dateSwitch");
+
+  dateWrapper.classList.remove("firstStart");
+  if (dateSwitch.checked) {
+    dateSwitch.checked = false;
+    dateWrapper.classList.add("exit");
+    dateWrapper.classList.remove("entrance");
+    chrome.storage.local.set({
+      date_switch: "off"
+    }, function() {});
+  } else {
+    dateSwitch.checked = true;
+    dateWrapper.classList.add("entrance");
+    dateWrapper.classList.remove("exit");
+    chrome.storage.local.set({
+      date_switch: "on"
+    }, function() {});
+  }
 }
 
 //Time: toggles the visibility of the time display
@@ -1762,6 +1787,9 @@ chrome.storage.local.get({
   document.getElementById("searchChange").addEventListener("click", function() {
     changeSearch();
   });
+  document.getElementById("dateSwitch").parentElement.addEventListener('click', function() {
+    updateDate();
+  });
   document.getElementById("timeSwitch").parentElement.addEventListener('click', function() {
     updateTime();
   });
@@ -1780,10 +1808,10 @@ chrome.storage.local.get({
   document.getElementById("time").addEventListener("click", function() {
     updateMilitary();
   });
-  /*
-  document.getElementById("dateDisplay").addEventListener("click", function() {
+  
+  document.getElementById("date").addEventListener("click", function() {
     updateDateFormat();
-  });*/
+  });
   document.getElementById("darkSlider").addEventListener("input", function() {
     updateFilter();
   });
