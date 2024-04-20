@@ -68,6 +68,15 @@
           </label>
         </div>
       </div>
+      <div class="menuItem" ID="todoMenuOption" data="Toggles the date">
+        <div class="menuText" ID="todoMenuText">Date Switch</div>
+        <div class="sliderWrapper">
+          <label class="switch">
+            <input type="checkbox" ID="dateSwitch" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
       <div class="menuText" style="color: transparent !important">.</div><!-- blank space divide -->
 
       <!-- the menu for background -->
@@ -146,13 +155,16 @@
       <div class="menuText" style="color: transparent !important; font-size: 34px;">.</div><!-- blank space divide -->
 
     </div>
-
+    
     <!-- the time widget -->
     <div class="timeWrapper" ID="timeWrapper">
       <h1 class="time" ID="time"></h1>
       <div class="pa" ID="pa"></div>
     </div>
-
+    <!-- the date widget -->
+    <div class="dateWrapper" ID="dateWrapper">
+      <h1 class="date" ID="date">test</h1>
+    </div>
     <!-- the info widget -->
     <div class="infoWrapper" ID="infoWrapper">
       <div class="info" ID="info"></div>
@@ -187,7 +199,7 @@
 
       </ol>
     </div>
-
+    
 
   </body>
 

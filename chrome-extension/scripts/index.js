@@ -37,9 +37,23 @@ function checkHour(i) {
   return i == 0 ? 12 : i;
 }
 
+/* Trying to incorporate this, when called directly after it just doesn't load 
+function updateDate(){
+  const currentDate=new Date();
+
+  const options={
+    month:'long',
+    dayNum:'numeric',
+    dayText:'numeric'
+  };
+  const formattedDate=currentDate.toLocaleDateString('en-US',options);
+  document.getElementById('date').innerHTML=formattedDate;
+}
+updateDate()
+*/
+
 //Time: starts the time
 function startTime() {
-
   //clear the timer
   if (window.newTab.clock.nextMinute)
     clearTimeout(window.newTab.clock.nextMinute);
@@ -62,8 +76,6 @@ function startTime() {
   // display the time
   document.getElementById('time').innerHTML = h + ":" + checkMin(m);
   document.getElementById("pa").innerHTML = pa;
-
-  today = new Date();
   let s = today.getSeconds();
   let ms = today.getMilliseconds();
   let nextM = (60 - s) * 1000 + (1000 - ms);
@@ -71,7 +83,7 @@ function startTime() {
   //calls changeMinute setting the timeout for when next minute occurs
   window.newTab.clock.nextMinute = setTimeout(function() {
     changeMinutes(h, m + 1);
-  }, nextM);
+  }, nextM); 
 }
 
 //Time: updates minutes
@@ -100,6 +112,8 @@ function dragElement(elmnt) {
   //depends on which element it is, different place to click
   if (elmnt.id == "timeWrapper")
     document.getElementById("time").onmousedown = dragMouseDown;
+  if (elmnt.id == "dateWrapper")
+    document.getElementById("date").onmousedown = dragMouseDown;
   if (elmnt.id == "searchWrapper")
     document.getElementById("searchDiv").onmousedown = dragMouseDown;
   if (elmnt.id == "todoWrapper")
@@ -149,6 +163,22 @@ function dragElement(elmnt) {
           time_left_data: elmnt.style.left
         }, function() {});
         window.newTab.clock.military = !window.newTab.clock.military;
+      }
+      /*
+      if (elmnt.id == "dateWrapper") {
+        chrome.storage.local.set({
+          date_top_data: elmnt.style.top,
+          date_left_data: elmnt.style.left
+        }, function() {});*/
+      if (elmnt.id == "dateWrapper") {
+        chrome.storage.local.set({
+          date_top_data: elmnt.style.top,
+          date_left_data: elmnt.style.left,
+          date_text_align_data: elmnt.style.textAlign,
+          date_align_data: elmnt.style.alignItems,
+          date_justify_data: elmnt.style.justifyContent
+        }, function() {});
+        
       }
       if (elmnt.id == "searchWrapper") {
         chrome.storage.local.set({
@@ -1462,6 +1492,7 @@ $(document).ready(function() {
 
   // Make the elements draggable:
   dragElement(document.getElementById("timeWrapper"));
+  dragElement(document.getElementById("dateWrapper"));
   dragElement(document.getElementById("searchWrapper"));
   dragElement(document.getElementById("todoWrapper"));
   dragElement(document.getElementById('infoWrapper'));
@@ -1491,7 +1522,136 @@ $(document).ready(function() {
     window.newTab.clock.military = (data.military_switch == 'on');
 
     startTime(); //start the time
+    
   });
+  //updated stuffs?didnt' work FIRST ATTEMPT
+  /*
+  chrome.storage.local.get({
+    date_switch: 'on',
+    date_top_data: '',
+    date_left_data: '',
+  }, function(data) {
+    if (data.date_switch == 'off') {
+      document.getElementById("dateSwitch").checked = false;
+      document.getElementById("dateWrapper").classList.add("exit");
+      document.getElementById("dateWrapper").classList.add("firstStart");
+    } else {
+      document.getElementById("dateSwitch").checked = true;
+      document.getElementById("dateWrapper").classList.add("entrance");
+    }
+    if (data.date_top_data != '') {
+      document.getElementById("dateWrapper").style.top = data.date_top_data;
+    }
+    if (data.date_left_data != '') {
+      document.getElementById("dateWrapper").style.left = data.date_left_data;
+    }
+    
+
+    
+    
+  });
+  
+  GHIBLIYFY-----------------
+  function updateDateFormat(format) {
+    const today = moment();
+    const formattedDate = today.format('dddd, MMMM Do');
+  
+    // const formattedDate = today.format(format);
+    document.getElementById("date").textContent = formattedDate;
+  }
+  chrome.storage.local.get({
+  date_switch: 'on',
+  date_top_data: '',
+  date_left_data: '',
+  date_align_data: '',
+  datetext_align_data: '',
+  date_justify_data: '',
+  date_format: 'dddd, MMMM Do'
+}, function(data) {
+  if (data.date_switch == 'off') {
+    document.getElementById("dateSwitch").checked = false;
+    document.getElementById("dateWrapper").classList.add("exit");
+    document.getElementById("dateWrapper").classList.add("firstStart");
+  } else {
+    document.getElementById("dateSwitch").checked = true;
+    document.getElementById("dateWrapper").classList.add("entrance");
+  }
+
+  if (data.date_top_data != '') {
+    document.getElementById("dateWrapper").style.top = data.date_top_data;
+  }
+  if (data.date_left_data != '') {
+    document.getElementById("dateWrapper").style.left = data.date_left_data;
+
+  }
+
+  if (data.date_align_data != '') {
+    document.getElementById("dateWrapper").style.alignContent = data.date_align_data;
+  }
+  if (data.date_text_align_data != '') {
+    document.getElementById("dateWrapper").style.textlign = data.time_date_align_data;
+  }
+  if (data.date_justify_data != '') {
+    document.getElementById("dateWrapper").style.justifyContent = data.date_justify_data;
+  }
+
+  updateDateFormat(data.date_format);
+
+  });
+  setInterval(function() {
+    updateDateFormat(chrome.storage.local.get().date_format);
+  }, 60000);
+  */
+  function updateDateFormat(format) {
+    const today = new Date();
+    const options = {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric'
+    };
+    const formattedDate = today.toLocaleDateString('en-US', options);
+
+    // const formattedDate = today.format(format);
+    document.getElementById("date").textContent = formattedDate;
+}
+
+chrome.storage.local.get({
+    date_switch: 'on',
+    date_top_data: '',
+    date_left_data: '',
+    date_align_data: '',
+    date_text_align_data: '',
+    date_justify_data: '',
+    date_format: 'dddd, MMMM Do'
+}, function(data) {
+    if (data.date_switch == 'off') {
+        document.getElementById("dateSwitch").checked = false;
+        document.getElementById("dateWrapper").classList.add("exit");
+        document.getElementById("dateWrapper").classList.add("firstStart");
+    } else {
+        document.getElementById("dateSwitch").checked = true;
+        document.getElementById("dateWrapper").classList.add("entrance");
+    }
+
+    if (data.date_top_data != '') {
+        document.getElementById("dateWrapper").style.top = data.date_top_data;
+    }
+    if (data.date_left_data != '') {
+        document.getElementById("dateWrapper").style.left = data.date_left_data;
+    }
+
+    if (data.date_align_data != '') {
+        document.getElementById("dateWrapper").style.alignContent = data.date_align_data;
+    }
+    if (data.date_text_align_data != '') {
+        document.getElementById("dateWrapper").style.textAlign = data.date_text_align_data;
+    }
+    if (data.date_justify_data != '') {
+        document.getElementById("dateWrapper").style.justifyContent = data.date_justify_data;
+    }
+
+    updateDateFormat(data.date_format);
+});
 
   //getting the info settings
   chrome.storage.local.get({
@@ -1620,6 +1780,10 @@ $(document).ready(function() {
   document.getElementById("time").addEventListener("click", function() {
     updateMilitary();
   });
+  /*
+  document.getElementById("dateDisplay").addEventListener("click", function() {
+    updateDateFormat();
+  });*/
   document.getElementById("darkSlider").addEventListener("input", function() {
     updateFilter();
   });
