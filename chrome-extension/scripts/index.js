@@ -1085,13 +1085,52 @@ function loadBackground(backJson) {
         descriptor = backList[index].description;
       }
 
-      //create the backgroundMenu switch and add it to background menu
-      var itemNode = createHTML("<div class=\"menuItem\" data=\"" + descriptor + "\"></div>");
-      var textNode = createHTML("<div class=\"menuText\">" + name + "</div>");
-      var divNode = createHTML("<div class=\"sliderWrapper\"> <label class=\"switch\"> <input type=\"checkbox\" ID=\"" + key + "\" checked> <span class=\"slider round\"></span> </label> </div>");
+      // Dynamic creation (this part looks good)
+      // Creating the background menu item dynamically
+      var itemNode = document.createElement("div");
+      itemNode.className = "backgroundItem"; // Add the correct class
+
+      var textNode = document.createElement("div");
+      textNode.className = "menuText"; // Ensure the correct class for styling
+      textNode.innerText = name; // Set the name for the item
+
+      var divNode = document.createElement("div");
+      divNode.className = "sliderWrapper_BG"; // Ensure the correct class
+
+      // Create the switch inside the sliderWrapper
+      var labelNode = document.createElement("label");
+      labelNode.className = "switch";
+
+      var inputNode = document.createElement("input");
+      inputNode.type = "checkbox";
+      inputNode.id = key;
+      inputNode.checked = true;
+
+      var spanNode = document.createElement("span");
+      spanNode.className = "slider round";
+
+      // Append the input and slider to the label
+      labelNode.appendChild(inputNode);
+      labelNode.appendChild(spanNode);
+
+      // Append the label to the sliderWrapper
+      divNode.appendChild(labelNode);
+
+      // Append text and switch to the itemNode
       itemNode.appendChild(textNode);
       itemNode.appendChild(divNode);
-      bkMenu.insertBefore(itemNode, document.getElementById("favoriteSlider"));
+
+      // Append the itemNode to the menu (bkMenu)
+      bkMenu.appendChild(itemNode);
+
+      
+      
+      
+      
+
+
+
+
 
       //adding the onClick for the swtiches
       document.getElementById(key).parentElement.onclick = function() {
