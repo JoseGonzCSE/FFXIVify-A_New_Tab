@@ -31,16 +31,17 @@
     <!-- the left side menu -->
     <div ID="menu">
       
-      <div class="favoriteDelete"> 
+      <div class="favoriteWrapper"> 
         <!-- favorite button -->
         <div class="menuItem" data="Add this background to your favorites">
-        <div class="sliderWrapper">
-          <div class="like-button">
-            <i class="material-icons not-liked bouncy md-36">favorite_border</i>
-            <i class="material-icons is-liked bouncy md-36">favorite</i>
+          <div class="sliderWrapper">
+            <div class="like-button">
+              <i class="material-icons not-liked bouncy md-36">favorite_border</i>
+              <i class="material-icons is-liked bouncy md-36">favorite</i>
+            </div>
           </div>
         </div>
-      </div>
+        
       <div class="menuItem" data="Remove this background">
         <!-- delete button -->
         <div class="sliderWrapper">
@@ -76,7 +77,7 @@
           </div>
         </div>
         <div ID="infoMenuItem" class="menuItem" ID="infoMenuOption" data="Toggles the Background Info">
-          <div class="menuText" >Background </div>
+          <div class="menuText"> Info </div>
           <div class="sliderWrapper">
             <label class="switch">
               <input type="checkbox" ID="infoSwitch" checked>
@@ -155,6 +156,7 @@
       </div>
 
       <!-- Buttons -->
+      <div class="buttonsWrapper">
       <div class="menuText" style="color: transparent !important">.</div><!-- blank space divide -->
       <div class="sliderWrapper buttonWrapper" data="Advanced Options">
         <button ID="advButton" class="button">
@@ -167,7 +169,7 @@
         </button>
       </div>
       <div class="menuText" style="color: transparent !important; font-size: 34px;">.</div><!-- blank space divide -->
-
+    </div>
     </div>
     <!-- the time widget -->
     <div class="timeWrapper" ID="timeWrapper">

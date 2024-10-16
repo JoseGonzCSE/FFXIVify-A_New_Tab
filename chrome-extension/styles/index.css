@@ -403,7 +403,7 @@
  #menu.delay {
    background-color: rgb(33,33,33,0.5);
    backdrop-filter: blur(8px);
-   width: 385px;
+   width: 450px;
    overflow: auto !important;
    /* firefox scrollbar */
    scrollbar-color: rgba(255, 255, 255, 0.1) rgba(0, 0, 0, 0);
@@ -467,8 +467,10 @@
   margin: 5px 0;
 }
 .backgroundMenu {
-  display: flex; /* Ensures all items inside are in a horizontal row */
-  flex-wrap: wrap; /* Allows wrapping to next line if necessary */
+  display: grid; /* Use grid layout */
+  grid-template-columns: repeat(3, 1fr); /* 2 columns */
+  gap: 15px; /* Add gap between grid items */
+  margin: 10px; /* Allows wrapping to next line if necessary */
 }
 
 
@@ -783,11 +785,17 @@
  }
 
  /* like and delete button */
-.favoriteDelete {
+.favoriteWrapper{
   display: flex; /* Flexbox layout */
   justify-content: space-around; /* Space evenly between the two buttons */
   align-items: center; /* Align the items vertically in the middle */
-  margin: 20px 0; /* Add some vertical spacing */
+  
+}
+.buttonsWrapper{
+  display: flex; /* Flexbox layout */
+  justify-content: space-around; /* Space evenly between the two buttons */
+  align-items: center;
+  margin: 50px -20px;
 }
  .like-button,
  .delete-button {
