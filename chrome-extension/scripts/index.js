@@ -1447,7 +1447,7 @@ $(document).ready(function() {
       scrollToPreviousElement: false,
       buttons: {
         support: {
-          text: "FAQ",
+          text: "FrameWork",
           btnClass: 'btn-blue',
           action: function() {
             window.location.href = window.newTab.support_link;
