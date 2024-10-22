@@ -753,7 +753,7 @@ function updateUiAni() {
   document.getElementById("searchWrapper").classList.toggle('noanimate');
   document.getElementById("infoWrapper").classList.toggle('noanimate');
   document.getElementById("menu").classList.toggle('noanimate');
-  document.getElementById("bookmarks").classList.toggle('noanimate');
+  
   window.newTab.uianimation = !window.newTab.uianimation;
 
   if (window.newTab.uianimation) {
@@ -1309,7 +1309,7 @@ $(document).ready(function() {
       window.newTab.confirmSettings.animation = 'none';
       window.newTab.uianimation = false;
       document.getElementById("menu").classList.add('noanimate');
-      document.getElementById("bookmarks").classList.add('noanimate');
+    
       document.getElementById("timeWrapper").classList.add('noanimate');
       document.getElementById("todoWrapper").classList.add('noanimate');
       document.getElementById("searchWrapper").classList.add('noanimate');
@@ -1335,50 +1335,7 @@ $(document).ready(function() {
       "action": "https://duckduckgo.com/",
       "placeholder": "Duckduckgo"
     }
-  ];
-
-  //add the bookmarks
-  chrome.bookmarks.getTree(function(bkList) {
-    window.newTab.bookmarklist = bkList[0].children[1].children;
-
-    if (window.newTab.bookmarklist.length == 0) {
-      document.getElementById("bookmarks").style = "display: none;"
-    } else {
-      let bkHtml = "";
-
-      //builds the bookmark html
-      function recurBkList(bklist) {
-        let node = bklist[0]
-        while (node != null) {
-          if (node.url == null) {
-            // console.log(i);
-            bkHtml += "<li class=\"bkItem\"><div class=\"folderName\">⮞ " + node.title + "</div><ol class=\"bkFolder\" style=\"list-style-type:none; display:none;\">";
-            if (node.children.length > 0) {
-              recurBkList(node.children);
-            }
-            bkHtml += "</ol></li>";
-          } else {
-            bkHtml += "<li class=\"bkItem\"><a href=\"" + node.url + "\" title=\"" + node.url + "\">" + node.title + "</a></li>";
-          }
-          node = bklist[node.index + 1];
-        }
-      }
-
-      recurBkList(window.newTab.bookmarklist);
-      document.getElementById("bkList").innerHTML = bkHtml;
-
-      folderList = document.getElementsByClassName("folderName");
-      for (i = 0; i < folderList.length; i++) {
-        folderList[i].onclick = function() {
-          this.nextElementSibling.classList.toggle("hidden");
-          $(this).next().slideToggle("fast");
-          this.innerText = this.innerText.replace("⮟", ">");
-          this.innerText = this.innerText.replace("⮞", "⮟");
-          this.innerText = this.innerText.replace(">", "⮞");
-        };
-      }
-    }
-  });
+  ]
 
   //add onclick for like and delete buttons
   $('.like-button').click(function() {
