@@ -144,7 +144,7 @@
     "description": "Title of no favorites message"
   },
   "no-fav-content": {
-    "message": "You don't have any favorite backgrounds. To add backgrounds to favorites, scroll down the menu and click the heart when you see a background you like.",
+    "message": "You don't have any favorite backgrounds. To add backgrounds to favorites, scroll up the menu and click the heart when you see a background you like.",
     "description": "content of no favorites message"
   },
   "okay": {
