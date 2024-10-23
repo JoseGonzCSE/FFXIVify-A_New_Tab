@@ -1,6 +1,6 @@
 # 🎮 FFXIVify: A New Tab 🎮
 
-**FFXIVify** transforms your boring new tab into a dynamic experience inspired by *Final Fantasy XIV*. Whether you're a dedicated Warrior of Light or a fan of stunning visuals, this extension is perfect for enhancing your daily browsing experience!
+**FFXIVify** transforms your new tab into a dynamic experience inspired by *Final Fantasy XIV*. Whether you're a dedicated Warrior of Light or a fan of stunning visuals, this extension is perfect for enhancing your daily browsing experience!
 
 ![Screenshot 1](/resources/Img3.PNG)
 
@@ -42,10 +42,36 @@
 - Initial release with customizable widgets and backgrounds.
 - Added favorite background functionality.
 - Included background visual customization sliders.
+  
+## ❓ FAQ
+
+### 🖼️ The background doesn't show up
+Make sure you're connected to the internet and have a stable connection! If the problem persists, you can report the issue using the **About** button in the menu.
+
+### 🖥️ My new tab isn't being replaced
+Ensure you've disabled other extensions that also replace your new tab. Conflicts between extensions may cause this issue.
+
+### 📑 What happened to my bookmarks?!
+You can bring up your bookmarks at the top of the page using these shortcuts:
+- **PC**: Press `CTRL + SHIFT + B`
+- **Mac**: Press `⌘ + Option + B`
+
+### 📏 My screen resolution changed, and now my widgets are lost off-screen. How do I get them back?
+No worries! You can reset the widget locations by clicking the **Reset** button in the menu.
+
+### 💔 I accidentally removed a background I like. How do I get it back?
+You can restore removed backgrounds by using the **Reset data** button in the **Settings Menu** .
+
+### 🐞 I encountered a bug or have a suggestion!
+We love feedback! Use the **About** button in the menu to let us know about any bugs or suggestions you have.
+
 
 ## ⚠️ Disclaimer
 
 I do not own any of the artwork featured in this extension. All images are publicly available from the *Final Fantasy XIV* official websites and used under free use policies.
+
+This project uses assets from *Final Fantasy XIV*, which are the intellectual property of Square Enix. These assets are used under free-use policies and are not for commercial distribution. The code in this repository is licensed under the MIT License, but **no part of this project, including the artwork, is intended for sale or profit**.
+
 Please contact (ffxivifysup@gmail.com) with any concerns.
 
 ## 📝 License
