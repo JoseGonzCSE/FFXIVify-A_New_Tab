@@ -1,5 +1,5 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 1,
   "name": "FFXIVify: A New Tab",
   "version": "1.0.0",
   "short_name": "FFXIVify",
