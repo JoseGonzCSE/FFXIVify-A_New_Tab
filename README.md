@@ -1,7 +1,14 @@
 # 🎮 FFXIVify: A New Tab 🎮
 
 **FFXIVify** transforms your boring new tab into a dynamic experience inspired by *Final Fantasy XIV*. Whether you're a dedicated Warrior of Light or a fan of stunning visuals, this extension is perfect for enhancing your daily browsing experience!
-![Screenshot 1](./resources/img1.png)
+
+![Screenshot 1](/resources/Img3.PNG)
+
+![Demo1](https://github.com/user-attachments/assets/b37c831c-cb01-4603-8863-81a1d2a33a3a)
+![Demo2](https://github.com/user-attachments/assets/997f7e57-816a-40d2-9061-5ca764bdad25)
+
+
+
 
 
 ## ✨ Features ✨
@@ -13,6 +20,7 @@
 - **Responsive Design** 📱: Perfectly optimized for different screen sizes.
 - **User-Friendly Toggles** 🎚: Easy switches to toggle widgets on/off with smooth transitions.
 
+![Screenshot 2](/resources/Img4.PNG)
 ## 📜 How to Use
 
 1. **Install the Extension**: Add the FFXIVify extension to your Chrome browser.
@@ -21,11 +29,13 @@
 4. **Save Your Favorites**: Use the heart icon to save backgrounds for later.
 5. **Explore Eorzea**: Every new tab brings a fresh backdrop from the world of *FFXIV*.
 
+![Screenshot 3](/resources/Img6.PNG)
 ## 🛠 Technologies & Frameworks Used: Please check them out!! 
 
 - **Minimal Newtab Framework**: This extension is powered by [Minimal Newtab](https://github.com/suitangi/Minimal-Newtab), a highly customizable open-source new tab framework.
 - **Ghiblify - New Tab**: Inspired by the beautifully designed [Ghiblify New Tab](https://chromewebstore.google.com/detail/ghiblify-new-tab/kdaipjfpbngmcginhhahacjkkkpbaefh).
 
+![Screenshot 4](/resources/Img2.PNG)
 ## 🔄 Change Log
 
 **Version 1.0.0** (2024-10-22):
@@ -37,3 +47,8 @@
 
 I do not own any of the artwork featured in this extension. All images are publicly available from the *Final Fantasy XIV* official websites and used under free use policies.
 Please contact (ffxivifysup@gmail.com) with any concerns.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
