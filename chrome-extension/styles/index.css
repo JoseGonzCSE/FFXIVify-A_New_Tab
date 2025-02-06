@@ -193,40 +193,7 @@
   justify-content:center;
 }
 
- /* search widget */
- .search {
-   padding: 5px;
-   border-radius: 20px;
-   color: rgba(255, 255, 255, 0.8);
-   background-color: rgba(0, 0, 0, 0.3) !important;
-   font-size: 20px;
-   font-family: "Abel";
-   font-weight: 100;
-   width: 420px;
-   border-color: rgba(255, 255, 255, 0) !important;
- }
 
- /* movable part of search widget */
- .searchDiv {
-   padding: 5px;
-   cursor: move;
- }
-
- /* change search button */
- #searchChange {
-   position: absolute;
-   top: 35%;
-   right: -25px;
-   font-size: 20px;
-   cursor: pointer;
-   color: rgba(255, 255, 255, 0);
-   transition: 0.25s;
-   user-select: none;
- }
-
- #searchChange:hover {
-   color: rgba(255, 255, 255, 0.3);
- }
 
  /* wrappers for widgets */
  .timeWrapper {
@@ -255,13 +222,7 @@
    opacity: 0;
  }
 
- .searchWrapper {
-   position: absolute;
-   top: 85%;
-   left: 7%;
-   z-index: 5;
-   opacity: 0;
- }
+
 
  .todoWrapper {
   position: absolute;

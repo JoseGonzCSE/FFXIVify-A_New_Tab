@@ -87,7 +87,7 @@ function changeMinutes(h, m) {
   }
 }
 
-//Widgets: sets the element to be draggable (customized for time, search bar, todo list)
+//Widgets: sets the element to be draggable (customized for time,  todo list)
 function dragElement(elmnt) {
   let pos1 = 0,
     pos2 = 0,
@@ -99,8 +99,7 @@ function dragElement(elmnt) {
     document.getElementById("time").onmousedown = dragMouseDown;
   if (elmnt.id == "dateWrapper")
     document.getElementById("date").onmousedown = dragMouseDown;
-  if (elmnt.id == "searchWrapper")
-    document.getElementById("searchDiv").onmousedown = dragMouseDown;
+  
   if (elmnt.id == "todoWrapper")
     document.getElementById("todoDiv").onmousedown = dragMouseDown;
   if (elmnt.id == "infoWrapper")
@@ -159,12 +158,7 @@ function dragElement(elmnt) {
         }, function() {});
         
       }
-      if (elmnt.id == "searchWrapper") {
-        chrome.storage.local.set({
-          search_top_data: elmnt.style.top,
-          search_left_data: elmnt.style.left
-        }, function() {});
-      }
+      
       if (elmnt.id == "todoWrapper") {
         chrome.storage.local.set({
           todo_top_data: elmnt.style.top,
@@ -196,52 +190,6 @@ function updateMilitary() {
       military_switch: 'off'
     }, function() {});
   startTime();
-}
-
-//Search: toggles the visibility of the search bar
-function updateSearch() {
-
-  let searchWrapper = document.getElementById("searchWrapper");
-  let searchSwitch = document.getElementById("searchSwitch");
-
-  searchWrapper.classList.remove("firstStart");
-  if (searchSwitch.checked) {
-    searchSwitch.checked = false;
-    searchWrapper.classList.add("exit");
-    searchWrapper.classList.remove("entrance");
-    chrome.storage.local.set({
-      search_switch: "off"
-    }, function() {});
-  } else {
-    searchSwitch.checked = true;
-    searchWrapper.classList.add("entrance");
-    searchWrapper.classList.remove("exit");
-    chrome.storage.local.set({
-      search_switch: "on"
-    }, function() {});
-  }
-}
-
-//Search bar: changes the search engine
-function changeSearch() {
-  chrome.storage.local.get({
-    search_engine: 0
-  }, function(data) {
-    let index = data.search_engine + 1;
-    if (index == window.newTab.searchEngines.length)
-      index = 0;
-    let searchInput = $('#searchInput');
-    searchInput.parent().attr('action', window.newTab.searchEngines[index].action);
-    console.log(window.newTab.searchEngines[index].action);
-    let val = (searchInput.val() == searchInput.attr('data-placeholder') ? "" : searchInput.val());
-    searchInput.attr('data-placeholder', window.newTab.searchEngines[index].placeholder);
-    searchInput.val(val);
-    searchInput.focus();
-    searchInput.blur();
-    chrome.storage.local.set({
-      search_engine: index
-    }, function() {});
-  });
 }
 
 //Date:Toggles visibility of the Date
@@ -463,8 +411,6 @@ function resetData() {
                 info_left_data: '',
                 todo_top_data: '',
                 todo_left_data: '',
-                search_top_data: '',
-                search_left_data: '',
               },
               function() {});
           }
@@ -474,7 +420,6 @@ function resetData() {
                 time_switch: 'on',
                 info_mode: 0,
                 info_switch: 'on',
-                search_switch: 'on',
                 todo_switch: 'on',
                 todo_data: ''
               },
@@ -750,7 +695,6 @@ function updateInfoMode() {
 function updateUiAni() {
   document.getElementById("timeWrapper").classList.toggle('noanimate');
   document.getElementById("todoWrapper").classList.toggle('noanimate');
-  document.getElementById("searchWrapper").classList.toggle('noanimate');
   document.getElementById("infoWrapper").classList.toggle('noanimate');
   document.getElementById("menu").classList.toggle('noanimate');
   
@@ -1186,7 +1130,6 @@ function loadLanguage(langJson) {
   setText('widgetsTitle', 'widgets-title');
   setText('timeMenuText', 'time-name');
   setText('todoMenuText', 'to-do-list-name');
-  setText('searchMenuText', 'search-bar-name');
   document.getElementById('timeMenuOption').setAttribute('data', langJson['time-menu-desc'].message);
 }
 
@@ -1312,30 +1255,12 @@ $(document).ready(function() {
     
       document.getElementById("timeWrapper").classList.add('noanimate');
       document.getElementById("todoWrapper").classList.add('noanimate');
-      document.getElementById("searchWrapper").classList.add('noanimate');
       document.getElementById("infoWrapper").classList.add('noanimate');
     }
     window.newTab.autopause = data.autopause;
   });
 
-  //set the search engine list
-  window.newTab.searchEngines = [{
-      "action": "https://www.google.com/search",
-      "placeholder": "Google Search"
-    },
-    {
-      "action": "https://www.bing.com/search",
-      "placeholder": "Bing Search"
-    },
-    {
-      "action": "https://search.yahoo.com/search",
-      "placeholder": "Yahoo Search"
-    },
-    {
-      "action": "https://duckduckgo.com/",
-      "placeholder": "Duckduckgo"
-    }
-  ]
+  
 
   //add onclick for like and delete buttons
   $('.like-button').click(function() {
@@ -1492,7 +1417,6 @@ $(document).ready(function() {
   // Make the elements draggable:
   dragElement(document.getElementById("timeWrapper"));
   dragElement(document.getElementById("dateWrapper"));
-  dragElement(document.getElementById("searchWrapper"));
   dragElement(document.getElementById("todoWrapper"));
   dragElement(document.getElementById('infoWrapper'));
 
@@ -1597,33 +1521,7 @@ chrome.storage.local.get({
     window.newTab.infoMode = data.info_mode;
   });
 
-  //getting the searchbar settings
-  chrome.storage.local.get({
-    search_switch: 'on',
-    search_top_data: '',
-    search_left_data: '',
-    search_engine: 0
-  }, function(data) {
-    if (data.search_switch == 'off') {
-      document.getElementById("searchSwitch").checked = false;
-      document.getElementById("searchWrapper").classList.add("exit");
-      document.getElementById("searchWrapper").classList.add("firstStart");
-    } else {
-      document.getElementById("searchSwitch").checked = true;
-      document.getElementById("searchWrapper").classList.add("entrance");
-    }
-    if (data.search_top_data != '') {
-      document.getElementById("searchWrapper").style.top = data.search_top_data;
-    }
-    if (data.search_left_data != '') {
-      document.getElementById("searchWrapper").style.left = data.search_left_data;
-    }
 
-    let searchInput = $('#searchInput');
-    searchInput.parent().attr('action', window.newTab.searchEngines[data.search_engine].action);
-    searchInput.attr('data-placeholder', window.newTab.searchEngines[data.search_engine].placeholder);
-    searchInput.val(window.newTab.searchEngines[data.search_engine].placeholder);
-  });
 
 
   //load the background filters
@@ -1676,12 +1574,6 @@ chrome.storage.local.get({
   });
 
   //setting the switches click event listeners
-  document.getElementById("searchSwitch").parentElement.addEventListener('click', function() {
-    updateSearch();
-  });
-  document.getElementById("searchChange").addEventListener("click", function() {
-    changeSearch();
-  });
   document.getElementById("dateSwitch").parentElement.addEventListener('click', function() {
     updateDate();
   });
@@ -1741,7 +1633,6 @@ chrome.storage.local.get({
   //sets the placeholders for the inputs that have it
   let inputs = [];
   inputs.push(document.getElementById("todoInput"));
-  inputs.push(document.getElementById("searchInput"));
   for (let i = 0; i < inputs.length; i++) {
     inputs[i].value = inputs[i].getAttribute('data-placeholder');
     inputs[i].addEventListener('focus', function() {
