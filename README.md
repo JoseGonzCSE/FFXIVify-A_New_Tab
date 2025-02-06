@@ -38,6 +38,9 @@
 ![Screenshot 4](/resources/Img2.PNG)
 ## 🔄 Change Log
 
+**Version 1.1.0** (2025-02-06):
+- Removed search functionaility to comply with new Chrome extension Policy. Sorry for the inconvinence to any users
+
 **Version 1.0.0** (2024-10-22):
 - Initial release with customizable widgets and backgrounds.
 - Added favorite background functionality.
