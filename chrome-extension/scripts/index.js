@@ -222,27 +222,17 @@ function updateSearch() {
   }
 }
 
-//Search bar: changes the search engine
-function changeSearch() {
-  chrome.storage.local.get({
-    search_engine: 0
-  }, function(data) {
-    let index = data.search_engine + 1;
-    if (index == window.newTab.searchEngines.length)
-      index = 0;
-    let searchInput = $('#searchInput');
-    searchInput.parent().attr('action', window.newTab.searchEngines[index].action);
-    console.log(window.newTab.searchEngines[index].action);
-    let val = (searchInput.val() == searchInput.attr('data-placeholder') ? "" : searchInput.val());
-    searchInput.attr('data-placeholder', window.newTab.searchEngines[index].placeholder);
-    searchInput.val(val);
-    searchInput.focus();
-    searchInput.blur();
-    chrome.storage.local.set({
-      search_engine: index
-    }, function() {});
-  });
+//Query the search engine
+function performSearch(query){
+
+  var queryInfo = {
+    text:query,
+    disposition: "CURRENT_TAB"
+  };
+  chrome.search.query(queryInfo);
 }
+
+
 
 //Date:Toggles visibility of the Date
 function updateDate() {
@@ -1318,24 +1308,6 @@ $(document).ready(function() {
     window.newTab.autopause = data.autopause;
   });
 
-  //set the search engine list
-  window.newTab.searchEngines = [{
-      "action": "https://www.google.com/search",
-      "placeholder": "Google Search"
-    },
-    {
-      "action": "https://www.bing.com/search",
-      "placeholder": "Bing Search"
-    },
-    {
-      "action": "https://search.yahoo.com/search",
-      "placeholder": "Yahoo Search"
-    },
-    {
-      "action": "https://duckduckgo.com/",
-      "placeholder": "Duckduckgo"
-    }
-  ]
 
   //add onclick for like and delete buttons
   $('.like-button').click(function() {
@@ -1602,7 +1574,6 @@ chrome.storage.local.get({
     search_switch: 'on',
     search_top_data: '',
     search_left_data: '',
-    search_engine: 0
   }, function(data) {
     if (data.search_switch == 'off') {
       document.getElementById("searchSwitch").checked = false;
@@ -1619,10 +1590,11 @@ chrome.storage.local.get({
       document.getElementById("searchWrapper").style.left = data.search_left_data;
     }
 
+    //---------------- HERE? ----------------
     let searchInput = $('#searchInput');
-    searchInput.parent().attr('action', window.newTab.searchEngines[data.search_engine].action);
-    searchInput.attr('data-placeholder', window.newTab.searchEngines[data.search_engine].placeholder);
-    searchInput.val(window.newTab.searchEngines[data.search_engine].placeholder);
+    searchInput.attr('data-placeholder',"Search");
+    searchInput.val("Search")
+    
   });
 
 
