@@ -231,6 +231,17 @@ function performSearch(query){
   };
   chrome.search.query(queryInfo);
 }
+// Responsible for the defualt search engine query
+document.addEventListener('DOMContentLoaded', function() {
+  const searchForm = document.getElementById('search');
+  const serachInput = document.getElementById('searchInput');
+
+  searchForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const query=serachInput.value;
+    performSearch(query);
+  });
+});
 
 
 
@@ -1590,11 +1601,6 @@ chrome.storage.local.get({
       document.getElementById("searchWrapper").style.left = data.search_left_data;
     }
 
-    //---------------- HERE? ----------------
-    let searchInput = $('#searchInput');
-    searchInput.attr('data-placeholder',"Search");
-    searchInput.val("Search")
-    
   });
 
 
@@ -1713,7 +1719,7 @@ chrome.storage.local.get({
   //sets the placeholders for the inputs that have it
   let inputs = [];
   inputs.push(document.getElementById("todoInput"));
-  inputs.push(document.getElementById("searchInput"));
+
   for (let i = 0; i < inputs.length; i++) {
     inputs[i].value = inputs[i].getAttribute('data-placeholder');
     inputs[i].addEventListener('focus', function() {

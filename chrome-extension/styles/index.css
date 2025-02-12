@@ -206,12 +206,25 @@
    border-color: rgba(255, 255, 255, 0) !important;
  }
 
+ 
+
  /* movable part of search widget */
  .searchDiv {
    padding: 5px;
    cursor: move;
  }
 
+ #searchInput::placeholder{
+    color: rgba(255, 255, 255, 0.7) !important;
+    opacity: 1 !important;
+
+ }
+ #searchInput::-webkit-search-cancel-button{
+  display: none;
+ }
+ #searchInput::search-cancel-button {
+  display: none;
+}
  /* change search button */
  #searchChange {
    position: absolute;
