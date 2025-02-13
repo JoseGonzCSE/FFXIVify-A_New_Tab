@@ -1601,6 +1601,9 @@ chrome.storage.local.get({
       document.getElementById("searchWrapper").style.left = data.search_left_data;
     }
 
+    
+
+
   });
 
 
@@ -1719,6 +1722,7 @@ chrome.storage.local.get({
   //sets the placeholders for the inputs that have it
   let inputs = [];
   inputs.push(document.getElementById("todoInput"));
+  inputs.push(document.getElementById("searchInput"));
 
   for (let i = 0; i < inputs.length; i++) {
     inputs[i].value = inputs[i].getAttribute('data-placeholder');
