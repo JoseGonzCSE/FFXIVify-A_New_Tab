@@ -1660,9 +1660,7 @@ chrome.storage.local.get({
   document.getElementById("searchSwitch").parentElement.addEventListener('click', function() {
     updateSearch();
   });
-  document.getElementById("searchChange").addEventListener("click", function() {
-    changeSearch();
-  });
+  
   document.getElementById("dateSwitch").parentElement.addEventListener('click', function() {
     updateDate();
   });
