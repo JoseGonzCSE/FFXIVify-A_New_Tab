@@ -1374,7 +1374,7 @@ $(document).ready(function() {
     let manifest = chrome.runtime.getManifest();
     $.confirm({
       title: 'About',
-      content: manifest.name + ' ' + manifest.version + '<br>' + manifest.description,
+      content: manifest.name + " 1.2.0" + '<br>' + manifest.description,
       type: 'blue',
       boxWidth: '25%',
       backgroundDismiss: true,
